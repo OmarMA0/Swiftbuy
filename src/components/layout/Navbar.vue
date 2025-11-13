@@ -15,7 +15,7 @@ function Logout(){
 
 <template>
     <div class="flex bg-[#e8eddf] justify-center gap-20 w-screen">
-        <p v-if="username" class="justify-start"> Welcome back {{ username }}</p>
+        <p v-if="username" class="justify-start m-1 p-1 text-lg border-2 border-[#f5cb5c] font-bold drop-shadow-lg rounded"> Welcome back {{ username }}</p>
         <ButtonComponent><RouterLink to="/">Home</RouterLink></ButtonComponent>
 <ButtonComponent v-if="username"> <RouterLink to="/CartView">Cart</RouterLink></ButtonComponent>
     <div class="flex gap-4">
