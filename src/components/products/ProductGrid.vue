@@ -1,10 +1,13 @@
 <script setup>
-import { onMounted, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
+import {search} from '@/stores/search'
 import ProductCard from './ProductCard.vue';
 const data = ref(null)
 const isloading = ref(true)
 const error = ref(null)
-
+const filtered_data = computed(()=>
+(data.value|| []).filter(p=>p.title.toLowerCase().includes(search.value.toLowerCase()))
+)
 onMounted(async()=>{
 try{
     const res = await fetch('https://fakestoreapi.com/products')
@@ -24,7 +27,7 @@ try{
     <p v-else-if="error"> Error {{ error }}</p>
     <div class="flex flex-wrap m-5 "  v-else>
         <div 
-        v-for="product in data" :key="product.id ">
+        v-for="product in filtered_data" :key="product.id ">
             <ProductCard :product="product"></ProductCard>
         </div>
     </div>

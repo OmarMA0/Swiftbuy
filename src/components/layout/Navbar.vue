@@ -5,8 +5,8 @@ import { RouterLink} from 'vue-router'
 import { useRouter } from 'vue-router'
 import { ref } from 'vue';
 import { username, clearUsername } from '@/stores/user'
+import {search} from '@/stores/search'
 const router = useRouter()
-const search_input = ref("")
 function Logout(){
     clearUsername()
     router.push('/')
@@ -22,8 +22,8 @@ function Logout(){
         <ButtonComponent >
             search
         </ButtonComponent>
-        <baseInput v-model="search_input"  placeholder="search ..."></baseInput>
-        <p class="bg-[#e8eddf]"> {{ search_input }}</p>
+        <baseInput v-model="search"  placeholder="search ..."></baseInput>
+        <p class="bg-[#e8eddf]"> {{ search }}</p>
     </div>
 <ButtonComponent v-if="username" @click="Logout"> Logout </ButtonComponent>
         </div>
