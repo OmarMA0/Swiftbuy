@@ -10,15 +10,16 @@ import { RouterLink } from 'vue-router'
         <h1 class=" m-2 p-3 font-style: italic drop-shadow-lg text-9xl font-bold text-[#f5cb5c]">Swiftbuy</h1>
         <div 
         class="flex items-center justify-center w-full">
-        <SContainer v-if="!username">
-    <p>new to Swiftbuy? make a new account here to start shopping</p>
-    <ButtonComponent class="grow"><router-link to="/Signup">Sign up</router-link></ButtonComponent>
-    <p>already have an account?</p>
-    <ButtonComponent><router-link class="w-full" to="/Signin">Login</router-link></ButtonComponent>
-    </SContainer>
+        <div class="flex-col  rounded-xl p-5 m-2 w-128 h-auto bg-[#242423]/50 
+        border-[#f5cb5c] shadow-lg flex flex-col gap-5 text-white" v-if="!username">
+    <p class="justify-start m-3 p-3 text-lg border-2 border-[#f5cb5c] font-bold drop-shadow-lg rounded">new to Swiftbuy? make a new account here to start shopping</p>
+    <ButtonComponent class="grow"><router-link class="block w-full h-full" to="/Signup">Sign up</router-link></ButtonComponent>
+    <p class="justify-start m-3 p-3 text-lg border-2 border-[#f5cb5c] font-bold drop-shadow-lg rounded">already have an account?</p>
+    <ButtonComponent><router-link  class="block w-full h-full" to="/Signin">Login</router-link></ButtonComponent>
+        </div>
     <SContainer v-if="username">
         <p>Wlcome back {{ username }} start shopping from here</p>
-        <ButtonComponent><router-link to="/Shopping">Shopping</router-link></ButtonComponent>
+        <ButtonComponent><router-link class="block w-full h-full" to="/Shopping">Shopping</router-link></ButtonComponent>
     </SContainer>
     </div>
     </div>

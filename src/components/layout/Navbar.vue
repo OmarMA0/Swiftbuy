@@ -14,16 +14,18 @@ function Logout(){
 </script>
 
 <template>
-    <div class="flex bg-[#e8eddf] justify-center gap-20 w-screen">
+    <div class="flex bg-[#242423] justify-center gap-20 w-screen text-white border-1 rounded border-[#f5cb5c]">
         <p v-if="username" class="justify-start m-1 p-1 text-lg border-2 border-[#f5cb5c] font-bold drop-shadow-lg rounded"> Welcome back {{ username }}</p>
         <ButtonComponent><RouterLink to="/">Home</RouterLink></ButtonComponent>
 <ButtonComponent v-if="username"> <RouterLink to="/CartView">Cart</RouterLink></ButtonComponent>
     <div class="flex gap-4">
         <ButtonComponent >
-            search
+            <RouterLink to="Shopping">
+            Shopping
+            </RouterLink>
         </ButtonComponent>
         <baseInput v-model="search"  placeholder="search ..."></baseInput>
-        <p class="bg-[#e8eddf]"> {{ search }}</p>
+        
     </div>
 <ButtonComponent v-if="username" @click="Logout"> Logout </ButtonComponent>
         </div>

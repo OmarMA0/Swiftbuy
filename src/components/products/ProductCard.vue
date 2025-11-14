@@ -1,8 +1,9 @@
 <script setup>
 import ButtonComponent from '../common/ButtonComponent.vue';
 import { carted_products , add_product } from '@/stores/carted_products';
+import { username } from '@/stores/user';
 const props = defineProps(['product'])
-import { useRouter } from 'vue-router'
+import { useRouter , RouterLink } from 'vue-router'
 const router = useRouter()
 
 function toCart(){
@@ -18,7 +19,12 @@ function toCart(){
         <p>price :{{ product.price }}</p>
         <p>amount available : {{ product.rating.count }}</p>
         <img class="max-w-24 max-h-24 min-w-24 min-h-24" :src="product.image" alt="product"/>
-    <ButtonComponent @click="toCart">add to cart</ButtonComponent>
+        <div class="w-full" v-if="username">
+    <ButtonComponent class="w-full" @click="toCart">add to cart</ButtonComponent>
+          </div>
+          <div class="w-full" v-else>
+    <ButtonComponent class="w-full"><RouterLink class="block w-full h-full"  to="/Signin"> Sign in </RouterLink></ButtonComponent>
+          </div>
 
   </div>
 
