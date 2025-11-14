@@ -3,6 +3,10 @@ import { ref } from 'vue'
 export const carted_products = ref([])
 
 export function add_product(product){
+    if (carted_products.value.find(p=>p.id === product.id)) {       //check if that product is already carted
+        increase_B_amount(product.id)                                     //increase the amount being bought of that product
+        return
+    }
     carted_products.value.push({
         ...product,
         amount : 1
